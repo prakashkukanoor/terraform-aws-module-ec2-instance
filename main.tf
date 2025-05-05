@@ -25,5 +25,5 @@ resource "aws_instance" "this" {
 
   tags = merge(
     local.common_tags,
-  { Name = "EC2-${var.environment}" })
+  { Name = "EC2-${count.index+1}-${var.environment}" })
 }
