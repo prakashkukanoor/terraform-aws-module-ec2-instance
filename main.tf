@@ -17,7 +17,7 @@ data "aws_ami" "this" {
 }
 
 resource "aws_instance" "this" {
-  ami           = data.this.id
+  ami           = data.aws_ami.this.id
   instance_type = var.instance_type
   subnet_id     = var.subnet_id
 
