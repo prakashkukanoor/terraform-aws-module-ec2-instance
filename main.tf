@@ -35,6 +35,7 @@ resource "aws_instance" "this" {
   ami           = data.aws_ami.this.id
   instance_type = var.instance_type
   subnet_id     = element(var.subnet_id, count.index)
+  security_groups = [aws_security_group.allow_all_traffic.id]
 
   tags = merge(
     local.common_tags,
