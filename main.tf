@@ -21,7 +21,7 @@ resource "aws_instance" "this" {
 
   ami           = data.aws_ami.this.id
   instance_type = var.instance_type
-  subnet_id     = var.subnet_id[count.index]
+  subnet_id     = element(var.subnet_id, count.index)
 
   tags = merge(
     local.common_tags,
