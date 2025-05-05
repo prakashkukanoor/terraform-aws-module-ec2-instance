@@ -17,9 +17,11 @@ data "aws_ami" "this" {
 }
 
 resource "aws_instance" "this" {
+  count = var.number_of_ec2 
+
   ami           = data.aws_ami.this.id
   instance_type = var.instance_type
-  subnet_id     = var.subnet_id
+  subnet_id     = var.subnet_id[count.index]
 
   tags = merge(
     local.common_tags,

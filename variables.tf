@@ -8,8 +8,11 @@ variable "instance_type" {
   type = string
 }
 variable "subnet_id" {
-  type = string
+  type = list(string)
 }
 variable "filter_name" {
   type = string
+}
+variable "number_of_ec2" {
+  type = number
 }
